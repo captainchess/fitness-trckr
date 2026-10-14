@@ -35,3 +35,8 @@ export async function createActivity(token, activity) {
     throw Error(result.message);
   }
 }
+
+/**
+ * Delete activity. Take an id and a token 
+ */
+export async function deleteActivity(id, token) {}
