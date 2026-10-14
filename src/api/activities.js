@@ -37,6 +37,24 @@ export async function createActivity(token, activity) {
 }
 
 /**
- * Delete activity. Take an id and a token 
+ * Delete activity. Take an id and a token
  */
-export async function deleteActivity(id, token) {}
+export async function deleteActivity(id, token) {
+  if (!token) throw Error("must have a token");
+
+  const response =
+    (API + `activities/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer" + token,
+      },
+      body: JSON.stringify(id),
+    });
+
+  if (!response.ok) {
+    const result = await response.json();
+    throw Error(result.message);
+  }
+}
