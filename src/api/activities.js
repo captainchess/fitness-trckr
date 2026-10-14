@@ -43,14 +43,12 @@ export async function deleteActivity(id, token) {
   if (!token) throw Error("must have a token");
 
   const response =
-    (API + `activities/${id}`,
+    (API + `/activities/${id}`,
     {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
         Authorization: "Bearer" + token,
       },
-      body: JSON.stringify(id),
     });
 
   if (!response.ok) {
